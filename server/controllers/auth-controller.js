@@ -27,7 +27,7 @@ const  bcrypt = require('bcryptjs');
 // 6. Respond: Respond with "Registration Successful" or handle errors.
 
  
- const register = async (req, res)=>{
+ const register = async (req, res, next)=>{
     try{
         // console.log(req.body);
         const {username, email, phone, password} = req.body;

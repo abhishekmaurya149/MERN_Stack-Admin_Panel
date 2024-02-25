@@ -23,9 +23,34 @@ const handleInput = (e) => {
 };
 
 // handle form on submit
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
   // console.log(user); 
+
+  try {     
+  const response = await fetch('http://localhost:5000/api/auth/register', {
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+    },
+    body:JSON.stringify(user),
+  });
+  
+  console.log("response from server: ", response);
+
+  if (response.ok) {
+    const responseData = await response.json();
+    console.log("response_data", responseData);
+    alert("registration sucsseful");
+    setUser({username:"", email: "", phone: "", password: ""});
+    console.log(responseData);
+  } else {
+    console.log("error inside response", "error");
+  }
+  
+} catch (error) {
+  console.log("error", error);    
+}
 };
 
 

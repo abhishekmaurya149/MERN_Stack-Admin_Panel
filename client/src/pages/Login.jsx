@@ -1,17 +1,20 @@
  import { useState } from "react";
-//  import { useNavigate } from "react-router-dom";
+ import { useNavigate } from "react-router-dom";
 import RegistrationPic from '../../public/images/list.png'
-
+// import {useAuth} from "../store/auth";
 
 
 export const Login = () => {
 
   const [user, setUser] = useState({
+    username: '',
     email: '',
     password: '',    
   });
 
-  // const navigate = useNavigate();
+  // const { saveTokenInLocalStr } = useAuth();
+
+  const navigate = useNavigate();
 
   // let handle the input field value
   const handleInput = (e) => {
@@ -25,8 +28,33 @@ export const Login = () => {
   };
 
   // handle form on submit
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
+  try {     
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+      },
+      body:JSON.stringify(user),
+    });
+    
+    console.log("respose data: ", response);
+  
+    if (response.ok) {
+      const responseData = await response.json();
+      alert("login sucsseful");
+      setUser({ email: "",  password: ""});
+      navigate("/");
+      console.log("after login: ", responseData);
+      // saveTokenInLocalStr(responseData.token);
+      NavigationPreloadManager("/");
+    }   else {
+      console.log("invalid credinsial");
+    }        
+  } catch (error) {
+    console.log("Error", error);    
+  }
   console.log(user); 
 };
 
