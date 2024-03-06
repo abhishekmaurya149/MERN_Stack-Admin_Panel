@@ -1,5 +1,8 @@
 import { useState } from "react";
 import RegistrationPic from '../../public/images/list.png'
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
+
 
 
 export const Register = () => {
@@ -10,6 +13,11 @@ export const Register = () => {
     phone: "",
     password: "",
   });
+
+ 
+  const navigate = useNavigate();
+
+  const {storeTokentInLS} = useAuth();
 
 const handleInput = (e) => {
   console.log(e);
@@ -30,7 +38,7 @@ const handleSubmit = async (e) => {
   try {     
   const response = await fetch('http://localhost:5000/api/auth/register', {
     method:"POST",
-    headers:{
+    header:{
       "Content-Type":"application/json",
     },
     body:JSON.stringify(user),
@@ -40,16 +48,21 @@ const handleSubmit = async (e) => {
 
   if (response.ok) {
     const responseData = await response.json();
-    console.log("response_data", responseData);
-    alert("registration sucsseful");
+    console.log("response_data from server", responseData);
+
+    storeTokentInLS(responseData.token);
+
+    // localStorage.setItem("token", responseData.token);
+
     setUser({username:"", email: "", phone: "", password: ""});
-    console.log(responseData);
+    navigate("/login");
+    // console.log(responseData);
   } else {
     console.log("error inside response", "error");
   }
   
 } catch (error) {
-  console.log("error", error);    
+  console.log("register error", error);    
 }
 };
 

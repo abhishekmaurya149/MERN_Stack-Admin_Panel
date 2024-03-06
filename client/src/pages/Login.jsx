@@ -1,7 +1,7 @@
  import { useState } from "react";
  import { useNavigate } from "react-router-dom";
 import RegistrationPic from '../../public/images/list.png'
-// import {useAuth} from "../store/auth";
+import {useAuth} from "../store/auth";
 
 
 export const Login = () => {
@@ -15,6 +15,7 @@ export const Login = () => {
   // const { saveTokenInLocalStr } = useAuth();
 
   const navigate = useNavigate();
+  const {storeTokentInLS} = useAuth();
 
   // let handle the input field value
   const handleInput = (e) => {
@@ -44,11 +45,15 @@ const handleSubmit = async (e) => {
     if (response.ok) {
       const responseData = await response.json();
       alert("login sucsseful");
+
+      storeTokentInLS(responseData.token);
+    // localStorage.setItem("token", responseData.token);
+
       setUser({ email: "",  password: ""});
       navigate("/");
       console.log("after login: ", responseData);
       // saveTokenInLocalStr(responseData.token);
-      NavigationPreloadManager("/");
+      // NavigationPreloadManager("/");
     }   else {
       console.log("invalid credinsial");
     }        

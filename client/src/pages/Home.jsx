@@ -8,8 +8,8 @@ import { NavLink } from "react-router-dom"
 export const Home = () => {
   return (
     <>
-      <main>
-        <secttion className="section-hero">
+    
+        <div className="section-hero">
           <div className="container grid grid-two-cols">
             <div className="hero-content">
               <p>We are the World Best IT Company</p>
@@ -40,8 +40,8 @@ export const Home = () => {
               />
             </div>
           </div>
-        </secttion>
-      </main>
+        </div>
+      
 
       {/* 2nd section */}
       {/* <Analytics /> */}

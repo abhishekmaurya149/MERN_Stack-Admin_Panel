@@ -6,6 +6,8 @@ import Services from "./pages/Services";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
+import Logout from "./pages/Logout";
+import Footer from '../src/components/Footer/Footer'
 
 
 
@@ -21,7 +23,9 @@ const App = () => {
   <Route path="/service" element={<Services/>}/>
   <Route path="/register" element={<Register/>}/>
   <Route path="/login" element={<Login/>}/>
+  <Route path="/logout" element={<Logout />}/>
 </Routes>
+<Footer />
 </Router>
 </>
   )

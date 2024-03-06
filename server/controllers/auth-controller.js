@@ -99,8 +99,26 @@ const login = async (req, res) => {
 
 
 
+// *-------------------
+// to send user data -User Logic
+// *-------------------
 
- module.exports = { home, register, login}
+const user = async (req, res) => {
+    try {
+        //? const userData = await User.find({})      ;
+        const userData = req.user;
+        console.log(userData);
+        return res.status(200).json({msg: userData});
+    } catch (error) {
+        console.log(`error from user route ${error}`);        
+    }
+};
+
+
+
+
+
+ module.exports = { home, register, login, user}
 
 
 
@@ -118,3 +136,5 @@ const login = async (req, res) => {
 // *_______________________
 
 // ? In an Express.js application, a "controller" refers to a part of your code that is responsible for handling the application's logic. Controllers are typically used to process incoming rquests, interact with models (data sources), and send responses back to clients. They help organize your application by separating concerns and following the MVC (Model -View-Controller) design  
+
+

@@ -3,7 +3,7 @@ const router = express.Router();
 const authControllers = require("../controllers/auth-controller");
 const signupSchema = require("../validators/auth-validator");
 const validate = require("../middlewares/validate-middleware");
-
+const authMiddleware = require("../middlewares/authMiddleware");
 // router.route('/', (req, res) => {
 //     res.status(200).send('This is router world.');
 //  });
@@ -22,6 +22,6 @@ const validate = require("../middlewares/validate-middleware");
 
  router.route('/login').post(authControllers.login);
 
-
+router.route("/user").get(authMiddleware, authControllers.user);
 
  module.exports = router;

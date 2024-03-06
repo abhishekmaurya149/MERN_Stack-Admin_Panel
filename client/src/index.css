@@ -226,3 +226,61 @@ a:active {
 /** -----------------------
 **end contact section css
 ** -------------------------  */
+
+
+/* ? ----------------------- */
+/**  start about section css */
+ /* ?-------------------------  */ 
+ 
+ .about{
+ & .aboutPage{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  row-gap: 3rem;
+  justify-content: center;
+  border: 2px solid salmon;
+
+ & .aboutLeft{
+  width: 40%;
+  height: 45% !important;
+  margin: 3rem;
+  background-color: #adacab;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+
+ &  img{
+  width: 72%;
+  margin-left: 10%;
+ }
+}
+}
+
+
+
+& .aboutRight{  
+  width: 40%;
+  height: 45% !important;
+  margin: 3rem;
+  /* background-color: #adacab; */
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  & h1{
+    margin-left: -23rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 9rem;
+  }
+}
+ }
+
+ /* ? ----------------------- */
+/**  end about section css */
+ /* ?-------------------------  */ 
