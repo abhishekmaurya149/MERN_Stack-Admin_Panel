@@ -1,5 +1,5 @@
 //  import { Analytics } from "../components/Analytics";
-import RegistrationPic from '../../public/images/list.png'
+import ProtfolioPic from '../../public/images/portfolio.png'
 
 import { NavLink } from "react-router-dom"
 
@@ -33,7 +33,7 @@ export const Home = () => {
             {/* hero images */}
             <div className="hero-image">
               <img
-                src= {RegistrationPic}
+                src= {ProtfolioPic}
                 alt="coding together"
                 width='500'
                 height='500'
@@ -73,7 +73,7 @@ export const Home = () => {
           {/* hero images */}
           <div className="hero-image">
               <img
-                src= {RegistrationPic}
+                src= {ProtfolioPic}
                 alt="coding together"
                 width='500'
                 height='500'
