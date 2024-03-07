@@ -22,10 +22,11 @@ const authMiddleware = async (req, res, next) => {
         const userData = await User.findOne({email: isVerified.email}).select({
             password: 0,
         });
+        // console.log(userData);
 
-        // req.token = token;
-        // req.user = userData;
-        // req.userID = user._id;
+        req.user = userData;
+        req.token = token;
+        req.userID = userData._id;
 
         //*Move on to the next middleware or route handler
         next();

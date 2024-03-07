@@ -1,17 +1,39 @@
 import { useState } from "react";
+import { useAuth } from "../store/auth";
 //  import { useNavigate } from "react-router-dom";
 import RegistrationPic from '../../public/images/list.png'
 
 
+// const defaultContactFormData = {
+//   username: '',
+//   email:'',
+//   message:'',
+// };
 
 const Contact = () => {
 
+  // const [data, setData] = useState(defaultContactFormData);
 
   const [contact, setContact] = useState({
     username: '',
     email: '',
     message: '',
   });
+
+ 
+
+  const [ userData, setUserData] = useState(true);
+
+  const {user} = useAuth();
+
+  if(userData && user) {
+    setContact({
+      username:user.username,
+      email: user.email,
+      message: '',
+    });
+    setUserData(false);
+  }
 
   // const navigate = useNavigate();
 

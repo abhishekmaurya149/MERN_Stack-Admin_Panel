@@ -37,6 +37,7 @@ export const Home = () => {
                 alt="coding together"
                 width='500'
                 height='500'
+                loading='lazy'
               />
             </div>
           </div>
@@ -77,6 +78,7 @@ export const Home = () => {
                 alt="coding together"
                 width='500'
                 height='500'
+                loading='lazy'
               />
             </div>
 
